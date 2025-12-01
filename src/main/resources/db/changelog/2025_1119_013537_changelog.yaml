@@ -1,0 +1,98 @@
+databaseChangeLog:
+- changeSet:
+    id: 1763516162757-13
+    author: asus (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            constraints:
+              nullable: true
+            name: enabled
+            type: BOOLEAN
+        tableName: users
+- changeSet:
+    id: 1763516162757-1
+    author: asus (generated)
+    changes:
+    - dropPrimaryKey:
+        tableName: bank
+- changeSet:
+    id: 1763516162757-2
+    author: asus (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: id
+        constraintName: bankPK
+        tableName: bank
+- changeSet:
+    id: 1763516162757-3
+    author: asus (generated)
+    changes:
+    - dropPrimaryKey:
+        tableName: card
+- changeSet:
+    id: 1763516162757-4
+    author: asus (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: id
+        constraintName: cardPK
+        tableName: card
+- changeSet:
+    id: 1763516162757-5
+    author: asus (generated)
+    changes:
+    - dropPrimaryKey:
+        tableName: client
+- changeSet:
+    id: 1763516162757-6
+    author: asus (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: id
+        constraintName: clientPK
+        tableName: client
+- changeSet:
+    id: 1763516162757-7
+    author: asus (generated)
+    changes:
+    - dropPrimaryKey:
+        tableName: merchant
+- changeSet:
+    id: 1763516162757-8
+    author: asus (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: id
+        constraintName: merchantPK
+        tableName: merchant
+- changeSet:
+    id: 1763516162757-9
+    author: asus (generated)
+    changes:
+    - dropPrimaryKey:
+        tableName: transaction
+- changeSet:
+    id: 1763516162757-10
+    author: asus (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: id
+        constraintName: transactionPK
+        tableName: transaction
+- changeSet:
+    id: 1763516162757-11
+    author: asus (generated)
+    changes:
+    - dropPrimaryKey:
+        tableName: users
+- changeSet:
+    id: 1763516162757-12
+    author: asus (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: id
+        constraintName: usersPK
+        tableName: users
+
