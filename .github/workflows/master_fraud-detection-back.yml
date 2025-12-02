@@ -57,9 +57,6 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'fraud-detection-back'
-          envs: |
-            DB_URL=${{ secrets.DB_URL }}
-            DB_PASSWORD=${{ secrets.DB_PASSWORD }}
-            DB_USERNAME=${{ secrets.DB_USERNAME }}
-            SPRING_PROFILES_ACTIVE=prod  # Assurer que Spring utilise le profil de prod
+          app-name: 'fraud-detection-back'  # Nom de l'app dans Azure
+          slot-name: 'Production'  # Choisir le slot à déployer
+          package: '${{ github.workspace }}/target/*.jar'  # Vérifier le chemin exact du fichier .jar
