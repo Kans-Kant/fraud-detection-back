@@ -11,7 +11,7 @@
 	<groupId>com.isfa.fr</groupId>
 	<artifactId>fraud-detection-back</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>fraud-detection-back</name>
 	<description>Fraud detection backend for LCAD</description>
 	<url/>
