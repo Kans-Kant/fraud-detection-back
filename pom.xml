@@ -95,10 +95,6 @@
 			<version>5.7.1</version>
 		</dependency>
 		<dependency>
-			<groupId>org.liquibase</groupId>
-			<artifactId>liquibase-core</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 		</dependency>
@@ -112,42 +108,6 @@
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-maven-plugin</artifactId>
 					<version>${spring.boot.maven.plugin.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.liquibase</groupId>
-					<artifactId>liquibase-maven-plugin</artifactId>
-					<version>5.0.1</version>
-					<configuration>
-						<changeLogFile>src/main/resources/db/changelog/db.changelog-master.yaml</changeLogFile>
-						<diffChangeLogFile>src/main/resources/db/changelog/${maven.build.timestamp}_changelog.yaml</diffChangeLogFile>
-						<driver>org.postgresql.Driver</driver>
-						<url>jdbc:postgresql://localhost:5432/fraudDetectionDb</url>
-						<defaultSchemaName />
-						<username>postgres</username>
-						<password>123Admin</password>
-						<referenceUrl>hibernate:spring:com.isfa.fr.fraudDetection?dialect=org.hibernate.dialect.PostgreSQLDialect
-							&amp;hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
-							&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
-						</referenceUrl>
-						<verbose>true</verbose>
-					</configuration>
-					<dependencies>
-						<dependency>
-							<groupId>org.liquibase.ext</groupId>
-							<artifactId>liquibase-hibernate6</artifactId>
-							<version>5.0.1</version>
-						</dependency>
-						<dependency>
-							<groupId>jakarta.validation</groupId>
-							<artifactId>jakarta.validation-api</artifactId>
-							<version>3.0.2</version>
-						</dependency>
-						<dependency>
-							<groupId>org.springframework.boot</groupId>
-							<artifactId>spring-boot-starter-data-jpa</artifactId>
-							<version>3.2.4</version>
-						</dependency>
-					</dependencies>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>

@@ -806,3 +806,192 @@ Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to no
 	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:271) ~[liquibase-core-4.31.1.jar:na]
 	... 104 common frames omitted
 
+2025-12-02T04:19:41.345+01:00  INFO 26148 --- [fraud-detection-back] [main] c.i.f.f.FraudDetectionBackApplication    : Starting FraudDetectionBackApplication using Java 21.0.3 with PID 26148 (C:\projects\client\isfa\fraud-detection\fraud-detection-back\target\classes started by asus in C:\projects\client\isfa\fraud-detection\fraud-detection-back)
+2025-12-02T04:19:41.347+01:00  INFO 26148 --- [fraud-detection-back] [main] c.i.f.f.FraudDetectionBackApplication    : The following 1 profile is active: "prod"
+2025-12-02T04:19:42.515+01:00  INFO 26148 --- [fraud-detection-back] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-02T04:19:42.599+01:00  INFO 26148 --- [fraud-detection-back] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 71 ms. Found 6 JPA repository interfaces.
+2025-12-02T04:19:43.216+01:00  INFO 26148 --- [fraud-detection-back] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-12-02T04:19:43.237+01:00  INFO 26148 --- [fraud-detection-back] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-02T04:19:43.237+01:00  INFO 26148 --- [fraud-detection-back] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-12-02T04:19:43.316+01:00  INFO 26148 --- [fraud-detection-back] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-02T04:19:43.316+01:00  INFO 26148 --- [fraud-detection-back] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1917 ms
+2025-12-02T04:19:43.507+01:00 ERROR 26148 --- [fraud-detection-back] [main] o.s.b.web.embedded.tomcat.TomcatStarter  : Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthenticationFilter' defined in file [C:\projects\client\isfa\fraud-detection\fraud-detection-back\target\classes\com\isfa\fr\fraudDetection\config\JwtAuthenticationFilter.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'securityBeanConfig': Unsatisfied dependency expressed through field 'userRepository': Error creating bean with name 'userRepository' defined in com.isfa.fr.fraudDetection.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+2025-12-02T04:19:43.538+01:00  INFO 26148 --- [fraud-detection-back] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-12-02T04:19:43.552+01:00  WARN 26148 --- [fraud-detection-back] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2025-12-02T04:19:43.564+01:00  INFO 26148 --- [fraud-detection-back] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-12-02T04:19:43.589+01:00 ERROR 26148 --- [fraud-detection-back] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Binding to target [Bindable@2b0454d2 type = org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties, value = 'provided', annotations = array<Annotation>[@org.springframework.boot.context.properties.ConfigurationProperties(ignoreInvalidFields=false, ignoreUnknownFields=false, prefix="spring.liquibase", value="spring.liquibase")], bindMethod = JAVA_BEAN] failed:
+
+    Property: spring.liquibase.diffchangelogfile
+    Value: "classpath:db/changelog/${maven.build.timestamp}_changelog.yaml"
+    Origin: class path resource [application-prod.properties] - 26:36
+    Reason: The elements [spring.liquibase.diffchangelogfile,spring.liquibase.driver,spring.liquibase.referenceurl,spring.liquibase.username,spring.liquibase.verbose] were left unbound.
+    Property: spring.liquibase.driver
+    Value: "org.postgresql.Driver"
+    Origin: class path resource [application-prod.properties] - 27:25
+    Reason: The elements [spring.liquibase.diffchangelogfile,spring.liquibase.driver,spring.liquibase.referenceurl,spring.liquibase.username,spring.liquibase.verbose] were left unbound.
+    Property: spring.liquibase.referenceurl
+    Value: "hibernate:spring:com.isfa.fr.fraudDetection?dialect=org.hibernate.dialect.PostgreSQLDialect&hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
+    Origin: class path resource [application-prod.properties] - 31:31
+    Reason: The elements [spring.liquibase.diffchangelogfile,spring.liquibase.driver,spring.liquibase.referenceurl,spring.liquibase.username,spring.liquibase.verbose] were left unbound.
+    Property: spring.liquibase.username
+    Value: "${DB_USERNAME}"
+    Origin: class path resource [application-prod.properties] - 29:27
+    Reason: The elements [spring.liquibase.diffchangelogfile,spring.liquibase.driver,spring.liquibase.referenceurl,spring.liquibase.username,spring.liquibase.verbose] were left unbound.
+    Property: spring.liquibase.verbose
+    Value: "true"
+    Origin: class path resource [application-prod.properties] - 32:26
+    Reason: The elements [spring.liquibase.diffchangelogfile,spring.liquibase.driver,spring.liquibase.referenceurl,spring.liquibase.username,spring.liquibase.verbose] were left unbound.
+
+Action:
+
+Update your application's configuration
+
+2025-12-02T04:20:55.287+01:00  INFO 26204 --- [fraud-detection-back] [main] c.i.f.f.FraudDetectionBackApplication    : Starting FraudDetectionBackApplication using Java 21.0.3 with PID 26204 (C:\projects\client\isfa\fraud-detection\fraud-detection-back\target\classes started by asus in C:\projects\client\isfa\fraud-detection\fraud-detection-back)
+2025-12-02T04:20:55.289+01:00  INFO 26204 --- [fraud-detection-back] [main] c.i.f.f.FraudDetectionBackApplication    : The following 1 profile is active: "dev"
+2025-12-02T04:20:56.477+01:00  INFO 26204 --- [fraud-detection-back] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-02T04:20:56.580+01:00  INFO 26204 --- [fraud-detection-back] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 86 ms. Found 6 JPA repository interfaces.
+2025-12-02T04:20:57.170+01:00  INFO 26204 --- [fraud-detection-back] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9000 (http)
+2025-12-02T04:20:57.182+01:00  INFO 26204 --- [fraud-detection-back] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-02T04:20:57.183+01:00  INFO 26204 --- [fraud-detection-back] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-12-02T04:20:57.248+01:00  INFO 26204 --- [fraud-detection-back] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-02T04:20:57.249+01:00  INFO 26204 --- [fraud-detection-back] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1915 ms
+2025-12-02T04:20:57.428+01:00 ERROR 26204 --- [fraud-detection-back] [main] o.s.b.web.embedded.tomcat.TomcatStarter  : Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthenticationFilter' defined in file [C:\projects\client\isfa\fraud-detection\fraud-detection-back\target\classes\com\isfa\fr\fraudDetection\config\JwtAuthenticationFilter.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'securityBeanConfig': Unsatisfied dependency expressed through field 'userRepository': Error creating bean with name 'userRepository' defined in com.isfa.fr.fraudDetection.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+2025-12-02T04:20:57.452+01:00  INFO 26204 --- [fraud-detection-back] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-12-02T04:20:57.459+01:00  WARN 26204 --- [fraud-detection-back] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2025-12-02T04:20:57.474+01:00  INFO 26204 --- [fraud-detection-back] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-12-02T04:20:57.495+01:00 ERROR 26204 --- [fraud-detection-back] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Binding to target [Bindable@49754e74 type = org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties, value = 'provided', annotations = array<Annotation>[@org.springframework.boot.context.properties.ConfigurationProperties(ignoreInvalidFields=false, ignoreUnknownFields=false, prefix="spring.liquibase", value="spring.liquibase")], bindMethod = JAVA_BEAN] failed:
+
+    Property: spring.liquibase.diffchangelogfile
+    Value: "classpath:db/changelog/${maven.build.timestamp}_changelog.yaml"
+    Origin: class path resource [application-dev.properties] - 29:36
+    Reason: The elements [spring.liquibase.diffchangelogfile,spring.liquibase.driver,spring.liquibase.referenceurl,spring.liquibase.username,spring.liquibase.verbose] were left unbound.
+    Property: spring.liquibase.driver
+    Value: "org.postgresql.Driver"
+    Origin: class path resource [application-dev.properties] - 30:25
+    Reason: The elements [spring.liquibase.diffchangelogfile,spring.liquibase.driver,spring.liquibase.referenceurl,spring.liquibase.username,spring.liquibase.verbose] were left unbound.
+    Property: spring.liquibase.referenceurl
+    Value: "hibernate:spring:com.isfa.fr.fraudDetection?dialect=org.hibernate.dialect.PostgreSQLDialect&hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
+    Origin: class path resource [application-dev.properties] - 34:31
+    Reason: The elements [spring.liquibase.diffchangelogfile,spring.liquibase.driver,spring.liquibase.referenceurl,spring.liquibase.username,spring.liquibase.verbose] were left unbound.
+    Property: spring.liquibase.username
+    Value: "${DB_USERNAME}"
+    Origin: class path resource [application-dev.properties] - 32:27
+    Reason: The elements [spring.liquibase.diffchangelogfile,spring.liquibase.driver,spring.liquibase.referenceurl,spring.liquibase.username,spring.liquibase.verbose] were left unbound.
+    Property: spring.liquibase.verbose
+    Value: "true"
+    Origin: class path resource [application-dev.properties] - 35:26
+    Reason: The elements [spring.liquibase.diffchangelogfile,spring.liquibase.driver,spring.liquibase.referenceurl,spring.liquibase.username,spring.liquibase.verbose] were left unbound.
+
+Action:
+
+Update your application's configuration
+
+2025-12-02T04:26:35.981+01:00  INFO 6248 --- [fraud-detection-back] [main] c.i.f.f.FraudDetectionBackApplication    : Starting FraudDetectionBackApplication using Java 21.0.3 with PID 6248 (C:\projects\client\isfa\fraud-detection\fraud-detection-back\target\classes started by asus in C:\projects\client\isfa\fraud-detection\fraud-detection-back)
+2025-12-02T04:26:35.984+01:00  INFO 6248 --- [fraud-detection-back] [main] c.i.f.f.FraudDetectionBackApplication    : The following 1 profile is active: "dev"
+2025-12-02T04:26:37.024+01:00  INFO 6248 --- [fraud-detection-back] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-02T04:26:37.113+01:00  INFO 6248 --- [fraud-detection-back] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 79 ms. Found 6 JPA repository interfaces.
+2025-12-02T04:26:37.673+01:00  INFO 6248 --- [fraud-detection-back] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9000 (http)
+2025-12-02T04:26:37.687+01:00  INFO 6248 --- [fraud-detection-back] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-02T04:26:37.687+01:00  INFO 6248 --- [fraud-detection-back] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-12-02T04:26:37.753+01:00  INFO 6248 --- [fraud-detection-back] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-02T04:26:37.754+01:00  INFO 6248 --- [fraud-detection-back] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1722 ms
+2025-12-02T04:26:37.925+01:00 ERROR 6248 --- [fraud-detection-back] [main] o.s.b.web.embedded.tomcat.TomcatStarter  : Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthenticationFilter' defined in file [C:\projects\client\isfa\fraud-detection\fraud-detection-back\target\classes\com\isfa\fr\fraudDetection\config\JwtAuthenticationFilter.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'securityBeanConfig': Unsatisfied dependency expressed through field 'userRepository': Error creating bean with name 'userRepository' defined in com.isfa.fr.fraudDetection.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+2025-12-02T04:26:37.949+01:00  INFO 6248 --- [fraud-detection-back] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-12-02T04:26:37.957+01:00  WARN 6248 --- [fraud-detection-back] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2025-12-02T04:26:37.970+01:00  INFO 6248 --- [fraud-detection-back] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-12-02T04:26:37.993+01:00 ERROR 6248 --- [fraud-detection-back] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Binding to target [Bindable@1eb9bf60 type = org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties, value = 'provided', annotations = array<Annotation>[@org.springframework.boot.context.properties.ConfigurationProperties(ignoreInvalidFields=false, ignoreUnknownFields=false, prefix="spring.liquibase", value="spring.liquibase")], bindMethod = JAVA_BEAN] failed:
+
+    Property: spring.liquibase.diffchangelogfile
+    Value: "classpath:db/changelog/${maven.build.timestamp}_changelog.yaml"
+    Origin: class path resource [application-dev.properties] - 29:36
+    Reason: The elements [spring.liquibase.diffchangelogfile,spring.liquibase.driver,spring.liquibase.referenceurl,spring.liquibase.username,spring.liquibase.verbose] were left unbound.
+    Property: spring.liquibase.driver
+    Value: "org.postgresql.Driver"
+    Origin: class path resource [application-dev.properties] - 30:25
+    Reason: The elements [spring.liquibase.diffchangelogfile,spring.liquibase.driver,spring.liquibase.referenceurl,spring.liquibase.username,spring.liquibase.verbose] were left unbound.
+    Property: spring.liquibase.referenceurl
+    Value: "hibernate:spring:com.isfa.fr.fraudDetection?dialect=org.hibernate.dialect.PostgreSQLDialect&hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
+    Origin: class path resource [application-dev.properties] - 34:31
+    Reason: The elements [spring.liquibase.diffchangelogfile,spring.liquibase.driver,spring.liquibase.referenceurl,spring.liquibase.username,spring.liquibase.verbose] were left unbound.
+    Property: spring.liquibase.username
+    Value: "${DB_USERNAME}"
+    Origin: class path resource [application-dev.properties] - 32:27
+    Reason: The elements [spring.liquibase.diffchangelogfile,spring.liquibase.driver,spring.liquibase.referenceurl,spring.liquibase.username,spring.liquibase.verbose] were left unbound.
+    Property: spring.liquibase.verbose
+    Value: "true"
+    Origin: class path resource [application-dev.properties] - 35:26
+    Reason: The elements [spring.liquibase.diffchangelogfile,spring.liquibase.driver,spring.liquibase.referenceurl,spring.liquibase.username,spring.liquibase.verbose] were left unbound.
+
+Action:
+
+Update your application's configuration
+
+2025-12-02T04:36:29.790+01:00  INFO 25796 --- [fraud-detection-back] [main] c.i.f.f.FraudDetectionBackApplication    : Starting FraudDetectionBackApplication using Java 21.0.3 with PID 25796 (C:\projects\client\isfa\fraud-detection\fraud-detection-back\target\classes started by asus in C:\projects\client\isfa\fraud-detection\fraud-detection-back)
+2025-12-02T04:36:29.793+01:00  INFO 25796 --- [fraud-detection-back] [main] c.i.f.f.FraudDetectionBackApplication    : The following 1 profile is active: "dev"
+2025-12-02T04:36:31.040+01:00  INFO 25796 --- [fraud-detection-back] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-02T04:36:31.129+01:00  INFO 25796 --- [fraud-detection-back] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 78 ms. Found 6 JPA repository interfaces.
+2025-12-02T04:36:31.719+01:00  INFO 25796 --- [fraud-detection-back] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9000 (http)
+2025-12-02T04:36:31.731+01:00  INFO 25796 --- [fraud-detection-back] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-02T04:36:31.732+01:00  INFO 25796 --- [fraud-detection-back] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-12-02T04:36:31.785+01:00  INFO 25796 --- [fraud-detection-back] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-02T04:36:31.785+01:00  INFO 25796 --- [fraud-detection-back] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1941 ms
+2025-12-02T04:36:32.112+01:00  INFO 25796 --- [fraud-detection-back] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-02T04:36:32.185+01:00  INFO 25796 --- [fraud-detection-back] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.33.Final
+2025-12-02T04:36:32.237+01:00  INFO 25796 --- [fraud-detection-back] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-02T04:36:32.624+01:00  INFO 25796 --- [fraud-detection-back] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-02T04:36:32.654+01:00  INFO 25796 --- [fraud-detection-back] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-02T04:36:33.024+01:00  INFO 25796 --- [fraud-detection-back] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5fe3b058
+2025-12-02T04:36:33.027+01:00  INFO 25796 --- [fraud-detection-back] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-02T04:36:33.089+01:00  WARN 25796 --- [fraud-detection-back] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-12-02T04:36:33.114+01:00  INFO 25796 --- [fraud-detection-back] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 18.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-02T04:36:34.201+01:00  INFO 25796 --- [fraud-detection-back] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-02T04:36:34.358+01:00  INFO 25796 --- [fraud-detection-back] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-02T04:36:34.735+01:00  WARN 25796 --- [fraud-detection-back] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-02T04:36:35.009+01:00  INFO 25796 --- [fraud-detection-back] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-12-02T04:36:35.010+01:00  WARN 25796 --- [fraud-detection-back] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-12-02T04:36:35.103+01:00  INFO 25796 --- [fraud-detection-back] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-12-02T04:36:36.796+01:00  INFO 25796 --- [fraud-detection-back] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 15 endpoints beneath base path '/actuator'
+2025-12-02T04:36:37.237+01:00  INFO 25796 --- [fraud-detection-back] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9000 (http) with context path '/'
+2025-12-02T04:36:37.254+01:00  INFO 25796 --- [fraud-detection-back] [main] c.i.f.f.FraudDetectionBackApplication    : Started FraudDetectionBackApplication in 7.957 seconds (process running for 8.332)
+2025-12-02T04:36:55.909+01:00  INFO 25796 --- [fraud-detection-back] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-12-02T04:36:55.922+01:00  INFO 25796 --- [fraud-detection-back] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-12-02T04:36:55.929+01:00  INFO 25796 --- [fraud-detection-back] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-02T04:36:55.932+01:00  INFO 25796 --- [fraud-detection-back] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-02T04:36:55.937+01:00  INFO 25796 --- [fraud-detection-back] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
