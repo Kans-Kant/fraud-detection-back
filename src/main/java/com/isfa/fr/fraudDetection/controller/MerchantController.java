@@ -6,6 +6,7 @@ import com.isfa.fr.fraudDetection.model.entities.Merchant;
 import com.isfa.fr.fraudDetection.service.MerchantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,9 +17,8 @@ public class MerchantController {
     private MerchantService merchantService;
 
     @GetMapping
-    public PageDto<Merchant> getAll(@RequestParam(defaultValue = "0") int page,
-                                 @RequestParam(defaultValue = "50") int size) {
-        Page<Merchant> merchantPage =  merchantService.getAll(page, size);
+    public PageDto<Merchant> getAll(Pageable pageable) {
+        Page<Merchant> merchantPage =  merchantService.getAll(pageable);
 
         return new PageDto<>(
                 merchantPage.getContent(),

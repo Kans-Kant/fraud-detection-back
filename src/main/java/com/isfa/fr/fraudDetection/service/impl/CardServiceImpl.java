@@ -9,7 +9,7 @@ import com.isfa.fr.fraudDetection.repository.ClientRepository;
 import com.isfa.fr.fraudDetection.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,8 +24,8 @@ public class CardServiceImpl implements CardService {
     private BankRepository bankRepository;
 
 
-    public Page<Card> getAll(int page, int size) {
-        return cardRepository.findAll(PageRequest.of(page, size));
+    public Page<Card> getAll(Pageable pageable) {
+        return cardRepository.findAll(pageable);
     }
 
     public Card getById(Long id) {

@@ -7,7 +7,7 @@ import com.isfa.fr.fraudDetection.service.TransactionService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.http.ResponseEntity;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,9 +26,8 @@ public class TransactionController {
     private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     @GetMapping
-    public PageDto<Transaction> getAllTransactions(@RequestParam(defaultValue = "0") int page,
-                                                   @RequestParam(defaultValue = "50") int size) {
-        Page<Transaction> transactionsPage = transactionService.getAllTransactionsWithScore(page, size);
+    public PageDto<Transaction> getAllTransactions(Pageable pageable) {
+        Page<Transaction> transactionsPage = transactionService.getAllTransactionsWithScore(pageable);
 
         return new PageDto<>(
                 transactionsPage.getContent(),
@@ -91,11 +90,9 @@ public class TransactionController {
     }
 
     @GetMapping("/fraud")
-    public Page<Transaction> getFraud(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "50") int size) {
+    public Page<Transaction> getFraud(Pageable pageable) {
 
-        return transactionService.getFraudulentTransactions(page, size);
+        return transactionService.getFraudulentTransactions(pageable);
     }
 
     @DeleteMapping("/delete/{id}")

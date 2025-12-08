@@ -6,6 +6,7 @@ import com.isfa.fr.fraudDetection.model.entities.Bank;
 import com.isfa.fr.fraudDetection.service.BankService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,9 +17,8 @@ public class BankController {
     private BankService bankService;
 
     @GetMapping
-    public PageDto<Bank> getAll(@RequestParam(defaultValue = "0") int page,
-                             @RequestParam(defaultValue = "50") int size) {
-        Page<Bank> banksPage = bankService.getAll(page, size);
+    public PageDto<Bank> getAll(Pageable pageable) {
+        Page<Bank> banksPage = bankService.getAll(pageable);
 
         return new PageDto<>(
                 banksPage.getContent(),

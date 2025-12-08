@@ -5,8 +5,10 @@ import com.isfa.fr.fraudDetection.repository.ClientRepository;
 import com.isfa.fr.fraudDetection.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -14,8 +16,8 @@ public class ClientServiceImpl implements ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
-    public Page<Client> getAll(int page, int size) {
-        return clientRepository.findAll(PageRequest.of(page, size));
+    public Page<Client> getAll(Pageable pageable) {
+        return clientRepository.findAll(pageable);
     }
 
     public Client getById(Long id) {
@@ -43,6 +45,11 @@ public class ClientServiceImpl implements ClientService {
 
     public void delete(Long id) {
         clientRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Client> searchByQuery(String queryText) {
+        return clientRepository.searchByQuery(queryText);
     }
 
 }

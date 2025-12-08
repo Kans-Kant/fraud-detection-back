@@ -6,6 +6,7 @@ import com.isfa.fr.fraudDetection.model.entities.Card;
 import com.isfa.fr.fraudDetection.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,10 +22,9 @@ public class CardController {
     }
 
     @GetMapping
-    public PageDto<Card> getAll(@RequestParam(defaultValue = "0") int page,
-                             @RequestParam(defaultValue = "50") int size) {
+    public PageDto<Card> getAll(Pageable pageable) {
 
-        Page<Card> cardsPage = cardService.getAll(page, size);
+        Page<Card> cardsPage = cardService.getAll(pageable);
 
         return new PageDto<>(
                 cardsPage.getContent(),

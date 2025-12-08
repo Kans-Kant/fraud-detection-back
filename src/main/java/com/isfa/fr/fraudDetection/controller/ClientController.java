@@ -6,7 +6,10 @@ import com.isfa.fr.fraudDetection.model.entities.Client;
 import com.isfa.fr.fraudDetection.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(Paths.CLIENT)
@@ -16,9 +19,8 @@ public class ClientController {
     private ClientService clientService;
 
     @GetMapping
-    public PageDto<Client> getAll(@RequestParam(defaultValue = "0") int page,
-                               @RequestParam(defaultValue = "50") int size) {
-        Page<Client> clientsPage = clientService.getAll(page, size);
+    public PageDto<Client> getAll(Pageable pageable) {
+        Page<Client> clientsPage = clientService.getAll(pageable);
 
         return new PageDto<>(
                 clientsPage.getContent(),
@@ -32,6 +34,11 @@ public class ClientController {
     @GetMapping("/{id}")
     public Client getById(@PathVariable Long id) {
         return clientService.getById(id);
+    }
+
+    @GetMapping("/search")
+    public List<Client> getById(@RequestParam String queryText) {
+        return clientService.searchByQuery(queryText);
     }
 
     @PostMapping

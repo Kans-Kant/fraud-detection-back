@@ -16,9 +16,7 @@ import com.isfa.fr.fraudDetection.service.TransactionService;
 import com.opencsv.CSVReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -41,9 +39,8 @@ public class TransactionServiceImpl implements TransactionService {
     @Autowired
     private CardRepository cardRepository;
 
-    // Récupérer toutes les transactions avec alertes et score
-    public Page<Transaction> getAllTransactionsWithScore(int page, int size) {
-        Page<Transaction> transactions = transactionRepository.findAll(PageRequest.of(page, size));
+    public Page<Transaction> getAllTransactionsWithScore(Pageable pageable) {
+        Page<Transaction> transactions = transactionRepository.findAll(pageable);
 
         Page<Transaction> result = transactions.map(tx -> {
             this.detect(tx);
@@ -61,7 +58,6 @@ public class TransactionServiceImpl implements TransactionService {
         return transactions;
     }
 
-    // Ajouter une transaction
     public Transaction addTransaction(Transaction tx) {
         Transaction savedTx = transactionRepository.save(tx);
         this.detect(savedTx); // calcul du score
@@ -162,10 +158,7 @@ public class TransactionServiceImpl implements TransactionService {
         );
     }
 
-    public Page<Transaction> getFraudulentTransactions(int page, int size) {
-
-        Pageable pageable = PageRequest.of(page, size, Sort.by("transactionTime").descending());
-
+    public Page<Transaction> getFraudulentTransactions(Pageable pageable) {
         return transactionRepository.findSuspiciousTransactions(pageable);
     }
 
@@ -239,19 +232,18 @@ public class TransactionServiceImpl implements TransactionService {
         double lat = tx.getMerchant().getLatitude();
         double lon = tx.getMerchant().getLongitude();
 
-        // Vérifier si la transaction est "loin" des transactions habituelles
         for (Transaction recentTx : recentTransactions) {
             double recentLat = recentTx.getMerchant().getLatitude();
             double recentLon = recentTx.getMerchant().getLongitude();
 
             double distance = haversine(lat, lon, recentLat, recentLon);
 
-            if (distance < 50) { // seuil : 50 km considéré comme "normal"
-                return false; // localisation similaire à une précédente transaction
+            if (distance < 50) {
+                return false;
             }
         }
 
-        return true; // localisation inhabituelle
+        return true;
     }
 
     // Méthode utilitaire pour calculer la distance entre deux points GPS (en km)

@@ -6,6 +6,7 @@ import com.isfa.fr.fraudDetection.service.MerchantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,8 +15,8 @@ public class MerchantServiceImpl implements MerchantService {
     @Autowired
     private MerchantRepository merchantRepository;
 
-    public Page<Merchant> getAll(int page, int size) {
-        return merchantRepository.findAll(PageRequest.of(page, size));
+    public Page<Merchant> getAll(Pageable pageable) {
+        return merchantRepository.findAll(pageable);
     }
 
     public Merchant getById(Long id) {
